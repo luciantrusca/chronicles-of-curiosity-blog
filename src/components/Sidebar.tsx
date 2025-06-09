@@ -1,4 +1,6 @@
-export default function Sidebar({tags}){
+import type {Tag} from "../../generated/prisma/client";
+
+export default function Sidebar({tags}: {tags: Tag[]}) {
     return (
        <aside> {/* Sidebar */}
             <nav>
