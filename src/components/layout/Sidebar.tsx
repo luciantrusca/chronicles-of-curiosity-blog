@@ -25,13 +25,6 @@ export default function Sidebar({tags}: {tags: Tag[]}) {
                     {tags.map (tag => (
                         <li key={tag.id}>{tag.name}</li>
                     ))}
-                    {/* TODO: Dynamically fill in with first 7 tags from DB */}
-                    {/*
-                        <li>
-                            <img src={""}></img>
-                            <span>Contact</span>
-                        </li>
-                    */}
                 </ul>
                 </section>
             </nav>
