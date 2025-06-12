@@ -1,15 +1,15 @@
 import React from 'react';
-import Sidebar from '@/components/layout/Sidebar';
-import Header from '../components/layout/Header';
+import Sidebar from '@/components/sidebar/Sidebar';
+import Header from '../components/header/Header';
 import { PrismaClient } from '../../generated/prisma/client';
-import LatestPost from '@/components/posts/LatestPost';
-import RecentPosts from '@/components/posts/RecentPosts';
+import LatestPost from '@/components/main_section/LatestPost';
+import RecentPosts from '@/components/main_section/RecentPosts';
+import MainContent from '@/components/main_section/MainContent';
 
 const prisma = new PrismaClient();
 
 export default async function App(){
-    const tags = await prisma.tag.findMany();
-    const latestPost = await prisma.post.findFirst({
+    const latestPosts = await prisma.post.findMany({
         orderBy: {
             createdAt: 'desc',
         },
@@ -20,17 +20,16 @@ export default async function App(){
             author: true,
             tags: true,
         },
+        take: 3
     });
 
     return (
-        <main className="">
-            <div className="flex bg-[#e7d9b4]">
-                <Sidebar tags={tags} />
-                <div className="flex-1 p-4">
-                    <Header />
-                    {latestPost ? <LatestPost post={latestPost} /> : <p>No latest post available</p>}
-                    <RecentPosts />
-                </div>  
+        <main className="bg-[#e7d9b4] min-h-screen flex flex-col">
+            <Header />
+            <div className="flex flex-1">
+                <Sidebar />
+                {/* <LatestPost post={latestPosts[0]} /> */}
+                <MainContent recent_posts={latestPosts} />
             </div>
         </main>
     );

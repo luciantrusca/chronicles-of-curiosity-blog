@@ -4,10 +4,11 @@ export default function LatestPost({post}: {post: Post}) {
     const preview = post.content.slice(0, 100) + "..."; // Preview content
     
     return (
-        <section>Latest Post
+        <section className="bg-[#F2E6C6] border-2 border-[#6B7133] p-4">
+            <h1 className="text-lg font-bold">Latest Post</h1>
             <h1>{post.title}</h1>
             <div style={{ display: "flex", gap: "1rem" }}>
-                <img src={post.coverUrl ?? ""} alt={post.title} />
+                <img className="w-50" src={post.coverUrl ?? ""} alt={post.title} />
                 <article>{preview}</article>
             </div>
         </section>
