@@ -1,5 +1,5 @@
 import type {Tag} from "../../../generated/prisma/client";
-import Spacer from "../misc/spacer";
+import ParchmentSpacer from "../misc/ParchmentSpacer";
 import SidebarSection from "./SidebarSection";
 import {PrismaClient} from "~/generated/prisma/client";
 
@@ -20,11 +20,11 @@ export default async function Sidebar() {
     }));
 
     return (
-       <aside className="w-64 grow"> {/* Sidebar */}
+       <aside className="w-64"> {/* Sidebar */}
             <nav className="flex flex-col h-full">
                 <SidebarSection className={[""]} title="Quest Log" items={questlogItems}/>
                 <SidebarSection className={[""]} title="Tags" items={tagItems}/>
-                <Spacer className="h-full bg-amber-200 border-[#006629] border-2"/>
+                <ParchmentSpacer className="h-full bg-amber-200 border-[#006629] border-2"/>
             </nav>
         </aside>
     )
