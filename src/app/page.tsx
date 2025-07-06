@@ -20,7 +20,7 @@ export default async function App(){
             author: true,
             tags: true,
         },
-        take: 3
+        take: 4
     });
 
     return (
