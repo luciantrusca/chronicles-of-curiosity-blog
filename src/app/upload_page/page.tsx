@@ -3,9 +3,10 @@ import Header from "@/components/header/Header";
 
 export default function UploadPage() {
     return (
-        <main>
+        <main className="min-h-screen bg-[#F7E6B6] m-6">
             <Header/>
-            <div className="mt-4 flex flex-col p-4 gap-[5vw] w-[600px] mx-auto">
+            {/* Main content area below header*/}
+            <div className="border-2 border-t-0 flex flex-col p-10 gap-[5vw] mx-auto"> 
                 <h1 className="text-4xl font-bold">Upload Post</h1>
 
 
@@ -20,9 +21,6 @@ export default function UploadPage() {
                         <img className="inline w-12 mr-2" src="/icons/upload_trim_bgrem.png" alt="Upload image" />
                         Upload image (optional)
                     </p>
-
-                    <h1 className=" text-3xl">This uses medieval</h1>
-                    <h1 className=" text-3xl">This uses gothic</h1>
                 </div>
 
 

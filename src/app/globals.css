@@ -4,19 +4,28 @@
 
 @tailwind utilities;
 
-
 :root {
   --background: #ffffff;
   --foreground: #000000;
   --text-color: #264E46;
 }
 
+@theme {
+  --color-medieval_green: #264E46;
+  --color-medieval_accent_green: #CBCB92;
+}
+
+
 @layer base {
   html, body {
     font-family: 'MedievalSharp', normal;
-    color: var(--text-color); /* <-- set default text color here */
+    color: var(--text-color);
   }
 }
+
+  input {
+    @apply border-2 border-medieval_accent_green;
+  }
 
 
 @theme inline {
