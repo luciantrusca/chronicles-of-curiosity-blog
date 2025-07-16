@@ -2,20 +2,22 @@
 @import "tailwindcss";
 
 
-/* @import "tailwindcss/preflight"; */
 @tailwind utilities;
 
+
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+  --text-color: #264E46;
+}
 
 @layer base {
   html, body {
     font-family: 'MedievalSharp', normal;
+    color: var(--text-color); /* <-- set default text color here */
   }
 }
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
 
 @theme inline {
   --color-background: var(--background);
@@ -26,12 +28,24 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #F7E6B6;
     --foreground: #706E66;
+    --text-color: #264E46;
   }
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
+  color: var(--text-color); /* <-- currently sets default text color */
+}
+
+@layer components {
+  .font-gothic {
+    font-family: 'MedievalSharp', cursive;
+    color: var(--text-color)
+  }
+  .font-medieval {
+    font-family: 'IM Fell English', serif;
+    color: var(--text-color)
+  }
 }

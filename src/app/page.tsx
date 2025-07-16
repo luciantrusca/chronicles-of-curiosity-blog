@@ -2,8 +2,6 @@ import React from 'react';
 import Sidebar from '@/components/sidebar/Sidebar';
 import Header from '../components/header/Header';
 import { PrismaClient } from '../../generated/prisma/client';
-import LatestPost from '@/components/main_section/LatestPost';
-import RecentPosts from '@/components/main_section/RecentPosts';
 import MainContent from '@/components/main_section/MainContent';
 
 const prisma = new PrismaClient();

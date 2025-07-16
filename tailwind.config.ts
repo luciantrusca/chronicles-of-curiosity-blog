@@ -1,6 +1,6 @@
 const { fontFamily } = require('tailwindcss/defaultTheme');
 
-
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     './src/app/**/*.{js,ts,jsx,tsx}',
@@ -9,9 +9,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'culpa': ['"Mea Culpa"', 'cursive'],
+        medieval: ['"IM Fell English"', ...fontFamily.serif],
+        gothic:  ['"MedievalSharp"',    ...fontFamily.sans],
       },
     },
   },
   plugins: [],
-}
+};
