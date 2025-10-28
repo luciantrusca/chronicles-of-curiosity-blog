@@ -19,12 +19,13 @@ export async function POST(request:Request){
     // Return a list of all tags in DB
     const tags_list = await prisma.tag.findMany();
 
-    const res = await request.json() //request body 
+    const res = request.headers.get('content-type') === 'application/json' ? await request.json() : request.formData();
+    console.log(res) // Log the request body to see what is being sent
     const { ...data } = res //unpackaging body
 
 
 
-const user = await prisma.post.create({
+const post = await prisma.post.create({
   data: {
     title: data.title,
     content: data.content,
