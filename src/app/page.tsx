@@ -1,3 +1,5 @@
+'use server'
+
 import React from 'react';
 import Sidebar from '@/components/sidebar/Sidebar';
 import Header from '../components/header/Header';
@@ -10,9 +12,6 @@ export default async function App(){
     const latestPosts = await prisma.post.findMany({
         orderBy: {
             createdAt: 'desc',
-        },
-        where: {
-            published: false,
         },
         include: {
             author: true,
