@@ -8,7 +8,7 @@ export default function LatestPost({post, className}: {post: Post; className?: s
             <h1 className="text-lg font-bold">Latest Post</h1>
             <h1>{post.title}</h1>
             <div style={{ display: "flex", gap: "1rem" }}>
-                <img className="w-45 p-4" src={post.coverUrl ?? ""} alt={post.title} />
+            {post.coverUrl && (<img className="w-45 p-4" src={post.coverUrl} alt={post.title} />)}
                 <article>{preview}</article>
             </div>
         </section>
