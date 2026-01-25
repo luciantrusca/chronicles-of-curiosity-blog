@@ -1,4 +1,4 @@
-import { Post, PrismaClient } from '~/generated/prisma/client';
+import { Post } from '~/generated/prisma/client';
 import PostCard from './PostCard';
 
 export default async function RecentPosts({ recent_posts, className }: { recent_posts: Post[]; className?: string[] }) {

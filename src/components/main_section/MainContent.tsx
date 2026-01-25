@@ -1,7 +1,6 @@
 import { Post } from "~/generated/prisma";
 import LatestPost from "./LatestPost";
 import RecentPosts from "./RecentPosts";
-import { PrismaClient } from "@prisma/client";
 
 export default function MainContent({recent_posts}: {recent_posts: Post[]}) {
     return (

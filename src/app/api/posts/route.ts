@@ -37,7 +37,7 @@ export async function POST(request:Request){
         connect: { id: data.authorId } // Make sure data.authorId is provided in the request body
       },
       tags: {
-          connect: tags_list.map(tag => ({id: tag.id}))
+          connect: tags_list.map(tag => ({id: tag.id})) 
       }
     },
   })
