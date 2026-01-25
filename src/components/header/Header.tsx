@@ -1,4 +1,7 @@
 import "/src/app/globals.css"
+import Link from "next/link";
+
+
 
 function Header(){
     return (
@@ -12,6 +15,7 @@ function Header(){
                     <ul className="flex space-x-2.5">
                         <li><a href="#latest-post">Latest post</a></li>
                         <li><a href="#recent-posts">Recent posts</a></li>
+                        <li><Link href="/upload_page">Upload</Link></li>
                         <li><a href="#about">About</a></li>
                     </ul>
                 </nav>
