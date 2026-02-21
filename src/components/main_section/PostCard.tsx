@@ -1,4 +1,4 @@
-import { Post } from "~/generated/prisma";
+import { Post } from "~/generated/prisma/client";
 
 export default function PostCard({post}: {post: Post}) {
 

@@ -1,4 +1,4 @@
-import { Post } from "~/generated/prisma";
+import { Post } from "~/generated/prisma/client";
 
 export default function LatestPost({post, className}: {post: Post; className?: string[]}) {
     const preview = post.content.slice(0, 100) + "..."; // Preview content

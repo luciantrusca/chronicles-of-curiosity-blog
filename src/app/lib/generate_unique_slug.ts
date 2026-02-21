@@ -1,7 +1,5 @@
 import slugify from "slugify";
-import { PrismaClient } from '../../../generated/prisma/client'
-
-const prisma = new PrismaClient();
+import { prisma } from './prisma';
 
 export async function generateUniqueSlug(title:string, check_unique:boolean){
     //make slug

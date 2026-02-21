@@ -1,14 +1,12 @@
 import type {Tag} from "../../../generated/prisma/client";
 import ParchmentSpacer from "../misc/ParchmentSpacer";
 import SidebarSection from "./SidebarSection";
-import {PrismaClient} from "~/generated/prisma/client";
+import { prisma } from "@/app/lib/prisma";
 
 const questlogItems = [
     { icon: "icons/medieval_compass Background Removed.png", label: "About", href: "/quest/1" },
     { icon: "/icons/medieval_feather.png", label: "Contact", href: "/quest/2" },
 ];
-
-const prisma = new PrismaClient();
 
 export default async function Sidebar() {
     const tags = await prisma.tag.findMany();

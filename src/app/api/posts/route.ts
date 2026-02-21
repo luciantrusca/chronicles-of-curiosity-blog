@@ -1,9 +1,6 @@
 import { NextResponse } from 'next/server'
-import { PrismaClient } from '~/generated/prisma/client'
+import { prisma } from '@/app/lib/prisma'
 import slugify from 'slugify'
-import { create } from 'domain'
-
-const prisma = new PrismaClient()
 
 // Returns all posts from the BD
 export async function GET(){

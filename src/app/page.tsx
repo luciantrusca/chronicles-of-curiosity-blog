@@ -3,10 +3,8 @@
 import React from 'react';
 import Sidebar from '@/components/sidebar/Sidebar';
 import Header from '../components/header/Header';
-import { PrismaClient } from '../../generated/prisma/client';
+import { prisma } from './lib/prisma';
 import MainContent from '@/components/main_section/MainContent';
-
-const prisma = new PrismaClient();
 
 export default async function App(){
     const latestPosts = await prisma.post.findMany({
