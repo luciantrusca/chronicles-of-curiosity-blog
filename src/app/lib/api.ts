@@ -57,7 +57,7 @@ export async function createPost(post: {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "x-admin-secret": process.env.ADMIN_SECRET ?? "",
+      "x-admin-secret": process.env.NEXT_PUBLIC_ADMIN_SECRET ?? "",
     },
     body: JSON.stringify({
       Title: post.title,

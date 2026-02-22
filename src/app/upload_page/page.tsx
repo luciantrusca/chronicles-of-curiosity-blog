@@ -1,26 +1,27 @@
-import Header from "@/components/header/Header";
-import { redirect } from "next/navigation";
-import { createPost } from "@/app/lib/api";
+'use client'
 
-export default async function UploadPage()
+import Header from "@/components/header/Header";
+import { useRouter } from "next/navigation";
+import { createPost } from "@/app/lib/api";
+import { useState } from "react";
+
+export default function UploadPage()
 {
-    async function submitBlogPost(formData: FormData) {
-        "use server";
+    const [submitting, setSubmitting] = useState(false);                                          
+    const router = useRouter()
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setSubmitting(true)
+        const formData = new FormData(e.currentTarget);
         const title = formData.get('title') as string;
         const content = formData.get('content') as string;
-
-        const response = await createPost({
-            title,
-            content,
-            tags: [],
-            published: true,
-        });
-
+        const response = await createPost({ title, content, tags: [], published: true });
+        setSubmitting(false)
         if (!response.ok) {
             throw new Error('Failed to submit blog post');
         }
-
-        redirect('/');
+        router.push('/')
     }
 
     return (
@@ -29,7 +30,7 @@ export default async function UploadPage()
             <div className="border-2 border-t-0 flex flex-col p-10 gap-[5vw] mx-auto">
                 <h1 className="text-4xl font-bold">Upload Post</h1>
 
-                <form action={submitBlogPost} className="flex flex-col gap-4">
+                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                     <div className="flex flex-col gap-2">
                         <h2 className="text-2xl font-bold">Post Title</h2>
                         <input
@@ -53,7 +54,7 @@ export default async function UploadPage()
                         />
                     </div>
 
-                    <button type="submit" className="bg-[#9EB373] text-(--text-color) p-2 rounded border-4 text-2xl">Publish Post</button>
+                    <button type="submit" disabled={submitting} className="bg-[#9EB373] text-(--text-color) p-2 rounded border-4 text-2xl">{submitting ? 'Publishing...' : 'Publish Post'}</button>
                 </form>
             </div>
         </main>
