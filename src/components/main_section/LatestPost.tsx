@@ -1,8 +1,8 @@
-import { Post } from "~/generated/prisma/client";
+import { Post } from "@/app/lib/api";
 
 export default function LatestPost({post, className}: {post: Post; className?: string[]}) {
-    const preview = post.content.slice(0, 100) + "..."; // Preview content
-    
+    const preview = post.content.slice(0, 100) + "...";
+
     return (
         <section className={`bg-[#F7E6B8] border-2 border-[#6B7133] p-4 ${className?.join(" ")}`}>
             <h1 className="text-lg font-bold">Latest Post</h1>

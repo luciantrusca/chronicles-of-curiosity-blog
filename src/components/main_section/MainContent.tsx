@@ -1,4 +1,4 @@
-import { Post } from "~/generated/prisma/client";
+import { Post } from "@/app/lib/api";
 import LatestPost from "./LatestPost";
 import RecentPosts from "./RecentPosts";
 
@@ -12,4 +12,3 @@ export default function MainContent({recent_posts}: {recent_posts: Post[]}) {
         </section>
     );
 }
-
