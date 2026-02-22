@@ -13,10 +13,10 @@ function Header(){
                 </div>
                 <nav className="">                      {/* Header navigation bar */}
                     <ul className="flex space-x-2.5">
-                        <li><a href="/">Latest post</a></li>
-                        <li><a href="/">Recent posts</a></li>
+                        <li><Link href="/">Latest post</Link></li>
+                        <li><Link href="/">Recent posts</Link></li>
                         <li><Link href="/upload_page">Upload</Link></li>
-                        <li><a href="#about">About</a></li>
+                        <li><Link href="/about">About</Link></li>
                     </ul>
                 </nav>
             </div>
