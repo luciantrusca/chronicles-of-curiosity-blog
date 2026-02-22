@@ -16,7 +16,7 @@ function Header(){
                         <li><Link href="/">Latest post</Link></li>
                         <li><Link href="/">Recent posts</Link></li>
                         <li><Link href="/upload_page">Upload</Link></li>
-                        <li><Link href="/about">About</Link></li>
+                        <li><Link href="/">About</Link></li>
                     </ul>
                 </nav>
             </div>
