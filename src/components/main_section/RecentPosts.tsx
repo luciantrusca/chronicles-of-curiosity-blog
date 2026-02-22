@@ -1,7 +1,7 @@
 import { Post } from '@/app/lib/api';
 import PostCard from './PostCard';
 
-export default async function RecentPosts({ recent_posts, className }: { recent_posts: Post[]; className?: string[] }) {
+export default function RecentPosts({ recent_posts, className }: { recent_posts: Post[]; className?: string[] }) {
     recent_posts = recent_posts.slice(0, 4);
 
     return (
