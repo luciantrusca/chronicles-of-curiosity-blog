@@ -8,6 +8,7 @@ import { useState } from "react";
 export default function UploadPage()
 {
     const [submitting, setSubmitting] = useState(false);                                          
+    const [error, setError] = useState<string | null>(null);
     const router = useRouter()
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -16,6 +17,16 @@ export default function UploadPage()
         const formData = new FormData(e.currentTarget);
         const title = formData.get('title') as string;
         const content = formData.get('content') as string;
+
+        //Check login cookie for permission to post
+        const cfAuth = document.cookie.split(';').find(cookie => cookie.trim().startsWith('CF_Authorization='));
+        if(!cfAuth) {
+            setSubmitting(false)
+            setError('You must be logged in to submit a post.');
+            return;
+        }
+        
+
         const response = await createPost({ title, content, tags: [], published: true });
         setSubmitting(false)
         if (!response.ok) {
@@ -54,7 +65,8 @@ export default function UploadPage()
                         />
                     </div>
 
-                    <button type="submit" disabled={submitting} className="bg-[#9EB373] text-(--text-color) p-2 rounded border-4 text-2xl">{submitting ? 'Publishing...' : 'Publish Post'}</button>
+                    {error && <p className="text-red-600">{error}</p>}
+                    <button type="submit" disabled={submitting || !!error} className="bg-[#9EB373] text-(--text-color) p-2 rounded border-4 text-2xl">{submitting ? 'Publishing...' : 'Publish Post'}</button>
                 </form>
             </div>
         </main>
