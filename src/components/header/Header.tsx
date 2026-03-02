@@ -15,8 +15,9 @@ function Header(){
                     <ul className="flex space-x-2.5">
                         <li><Link href="/">Latest post</Link></li>
                         <li><Link href="/">Recent posts</Link></li>
-                        <li><a href="/upload_page">Upload</a></li>
+                        <li><Link href="/upload_page">Upload</Link></li>
                         <li><Link href="/">About</Link></li>
+                        <li><a href="/login">Login</a></li>
                     </ul>
                 </nav>
             </div>
