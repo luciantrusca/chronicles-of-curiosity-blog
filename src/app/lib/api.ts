@@ -1,4 +1,5 @@
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+const WORKER_URL = process.env.NEXT_PUBLIC_WORKER_URL;
 
 export type Post = {
   slug: string;
