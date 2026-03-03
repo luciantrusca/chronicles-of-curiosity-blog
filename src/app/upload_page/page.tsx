@@ -18,19 +18,15 @@ export default function UploadPage()
         const title = formData.get('title') as string;
         const content = formData.get('content') as string;
 
-        //Check login cookie for permission to post
-        const cfAuth = document.cookie.split(';').find(cookie => cookie.trim().startsWith('CF_Authorization='));
-        if(!cfAuth) {
-            setSubmitting(false)
-            setError('You must be logged in to submit a post.');
-            return;
-        }
-        
-
         const response = await createPost({ title, content, tags: [], published: true });
         setSubmitting(false)
+        if (response.status === 401 || response.status === 403) {
+            setError('You must be logged in to publish. Please use the Login button.');
+            return;
+        }
         if (!response.ok) {
-            throw new Error('Failed to submit blog post');
+            setError('Failed to submit blog post. Please try again.');
+            return;
         }
         router.push('/')
     }
@@ -66,7 +62,7 @@ export default function UploadPage()
                     </div>
 
                     {error && <p className="text-red-600">{error}</p>}
-                    <button type="submit" disabled={submitting || !!error} className="bg-[#9EB373] text-(--text-color) p-2 rounded border-4 text-2xl">{submitting ? 'Publishing...' : 'Publish Post'}</button>
+                    <button type="submit" disabled={submitting} className="bg-[#9EB373] text-(--text-color) p-2 rounded border-4 text-2xl">{submitting ? 'Publishing...' : 'Publish Post'}</button>
                 </form>
             </div>
         </main>
