@@ -53,9 +53,11 @@ export async function createPost(post: {
   tags?: string[];
   published?: boolean;
 }): Promise<Response> {
+  const WORKER_URL = process.env.NEXT_PUBLIC_WORKER_URL;
+
   const cfToken = document.cookie.split(';').find(c => c.trim().startsWith('CF_Authorization='))?.split('=')[1];
 
-  const res = await fetch('${WORKER_URL}/posts', {
+  const res = await fetch(`${WORKER_URL}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
