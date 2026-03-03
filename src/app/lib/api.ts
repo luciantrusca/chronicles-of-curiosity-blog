@@ -54,7 +54,7 @@ export async function createPost(post: {
   tags?: string[];
   published?: boolean;
 }): Promise<Response> {
-  const WORKER_URL = process.env.NEXT_PUBLIC_WORKER_URL;
+  // const WORKER_URL = process.env.NEXT_PUBLIC_WORKER_URL;
 
   const cfToken = document.cookie.split(';').find(c => c.trim().startsWith('CF_Authorization='))?.split('=')[1];
 
