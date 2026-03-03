@@ -53,18 +53,33 @@ export async function createPost(post: {
   tags?: string[];
   published?: boolean;
 }): Promise<Response> {
-  const res = await fetch(`${API_BASE_URL}/posts`, {
-    method: "POST",
+  const cfToken = document.cookie.split(';').find(c => c.trim().startsWith('CF_Authorization='))?.split('=')[1];
+
+  const res = await fetch('${WORKER_URL}/posts', {
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
-      "x-admin-secret": process.env.NEXT_PUBLIC_ADMIN_SECRET ?? "",
+      'Content-Type': 'application/json',
+      'CF-Access-Token': cfToken ?? '',
     },
     body: JSON.stringify({
       Title: post.title,
       Content: post.content,
       Tags: post.tags ?? [],
       Published: post.published ?? true,
-    }),
-  });
+  })});
   return res;
+
+  // const res = await fetch(`${API_BASE_URL}/posts`, {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //     "x-admin-secret": process.env.NEXT_PUBLIC_ADMIN_SECRET ?? "",
+  //   },
+  //   body: JSON.stringify({
+  //     Title: post.title,
+  //     Content: post.content,
+  //     Tags: post.tags ?? [],
+  //     Published: post.published ?? true,
+  //   }),
+  // });
 }
