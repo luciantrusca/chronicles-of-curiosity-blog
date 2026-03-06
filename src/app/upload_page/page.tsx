@@ -54,10 +54,9 @@ export default function UploadPage()
 
                     <div className="w-full">
                         <h2 className="text-2xl font-bold">Post Content</h2>
-                        <input name='content'
-                            className="border border-gray-300 p-2 rounded h-32 w-full"
-                            type="text"
-                            placeholder="Enter post content"
+                        <textarea name='content'
+                            className="border border-gray-300 p-2 rounded h-64 w-full"
+                            placeholder="Enter post content (markdown supported)"
                         />
                     </div>
 
