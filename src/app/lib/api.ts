@@ -35,14 +35,14 @@ function mapPost(raw: LambdaPost): Post {
 }
 
 export async function fetchPosts(): Promise<Post[]> {
-  const res = await fetch(`${API_BASE_URL}/posts`, { cache: "no-store" });
+  const res = await fetch(`${API_BASE_URL}/posts`, { cache: "force-cache" });
   if (!res.ok) throw new Error("Failed to fetch posts");
   const data: LambdaPost[] = await res.json();
   return data.map(mapPost);
 }
 
 export async function fetchPost(slug: string): Promise<Post> {
-  const res = await fetch(`${API_BASE_URL}/posts/${slug}`, { cache: "no-store" });
+  const res = await fetch(`${API_BASE_URL}/posts/${slug}`, { cache: "force-cache" });
   if (!res.ok) throw new Error(`Failed to fetch post: ${slug}`);
   const data: LambdaPost = await res.json();
   return mapPost(data);
