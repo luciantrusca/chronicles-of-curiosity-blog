@@ -1,4 +1,4 @@
-import { fetchPost, fetchPosts } from "@/app/lib/api";
+import { fetchPost } from "@/app/lib/api";
 
 export default async function PostPage({ params }: { params: { slug: string } }) {
     const post = await fetchPost(params.slug);
