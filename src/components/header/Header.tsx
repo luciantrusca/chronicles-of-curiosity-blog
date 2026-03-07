@@ -1,9 +1,15 @@
+import { fetchPosts } from "@/app/lib/api";
 import "/src/app/globals.css"
 import Link from "next/link";
+import { useEffect } from "react";
 
 
 
-function Header(){
+async function Header(){
+    const latestPosts = await fetchPosts(); 
+    const latestSlug = latestPosts[0]?.slug;
+
+
     return (
     <header className="">
             <div className="flex align-middle justify-center items-center gap-5 p-2 bg-[#F7E6B8] border-2">   {/* Header logo text + svg + nav */}
@@ -13,7 +19,7 @@ function Header(){
                 </div>
                 <nav className="">                      {/* Header navigation bar */}
                     <ul className="flex space-x-2.5">
-                        <li><Link href="/">Latest post</Link></li>
+                        <li><Link href={`/posts/${latestSlug}`}>Latest post</Link></li>
                         <li><Link href="/">Recent posts</Link></li>
                         <li><Link href="/upload_page">Upload</Link></li>
                         <li><Link href="/">About</Link></li>
